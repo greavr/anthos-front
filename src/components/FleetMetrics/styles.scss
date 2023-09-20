@@ -1,0 +1,111 @@
+@import '../../scss/variables.scss';
+
+.fleet-metrics {
+  background: white;
+  border: $grey_light 1px solid;
+  border-radius: 8px;
+  height: 40vh;
+
+  &__title {
+    align-items: center;
+    border-bottom: 1px solid $grey_light;
+    display: flex;
+    // font-family: 'sans-medium';
+    font-size: 18px;
+    padding: 25px 35px;
+
+    .icon {
+      width: 16px;
+    }
+
+    .text {
+      margin-left: 10px;
+    }
+
+    .label {
+      background: rgba($blue, .14);
+      border-radius: 40px;
+      color: $blue;
+      font-size: 12px;
+      margin-left: 15px;
+      padding: 3px 15px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    font-size: 11px;
+
+    &__button {
+      
+    }
+  }
+
+  &__iframe-wrapper {
+    height: calc(50vh - 169px);
+    // padding: 20px 35px;
+    // width: 100%;
+    overflow-y: scroll;
+  }
+
+  &__iframe-row {
+    border-bottom: 1px solid $grey_light;
+    width: 100%;
+
+    &__title {
+      border-bottom: none;
+      color: $blue;
+      cursor: pointer;
+      font-family: 'sans-medium';
+      padding: 18px 35px;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid $blue;
+        left: 13px;
+        top: 21px;
+        transform: rotate(180deg);
+        transition: transform .3s ease-in-out;
+      }
+    }
+
+    &__iframe-wrapper {
+      display: none;
+      padding: 12px 30px;
+
+      iframe {
+        height: 320px;
+        width: 100%;
+      }
+    }
+
+    &.is-expanded {
+      .fleet-metrics__iframe-row__title {
+        border-bottom: 1px solid $grey_light;
+
+        &::after {
+          transform: rotate(0);
+        }
+      }
+
+      .fleet-metrics__iframe-row__iframe-wrapper {
+        display: block;
+      }
+    }
+  }
+
+  &__iframe {
+    color: red !important;
+    height: 1400px;
+    top: 30px;
+    width: 100%;
+    margin-left: -72px;
+    margin-top: -12.5%;
+  }
+}

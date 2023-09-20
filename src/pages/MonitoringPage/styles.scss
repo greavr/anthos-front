@@ -1,0 +1,28 @@
+@import '../../scss/variables.scss';
+
+.monitoring-page {
+  background: $grey_bg;
+  padding: 12px 12px 0;
+  width: 100%;
+
+  .map {
+    // width: 100%;
+  }
+
+  &__panel {
+    display: flex;
+    height: calc(50vh - 100px);
+    margin-top: 12px;
+
+    .short-fleet-list {
+      flex-basis: 38%;
+      height: 100%;
+      margin-right: 12px;
+    }
+  
+    .fleet-metrics {
+      flex-basis: 62%;
+      height: 100%;
+    }
+  }
+}

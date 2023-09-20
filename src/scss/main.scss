@@ -1,0 +1,20 @@
+@import './reset.scss';
+@import './typography.scss';
+@import './variables.scss';
+
+html,
+body {
+  background: $grey_bg;
+  font-family: 'sans-regular';
+  font-size: 14px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.App {
+  &__main {
+    display: flex;
+    height: calc(100vh - 58px);
+  }
+}
