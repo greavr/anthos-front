@@ -109,7 +109,7 @@ const VMManagement = () => {
 
     axios({
       method: 'post',
-      url: `https://edge-demo-fljjthbteq-uw.a.run.app/v1/virtual-machine/create-vm?vm_image_name=${selectedImage}&cluster_name=${selectedStore}&vm_parameterset_name=${selectedParameterName}`,
+      url: process.env.REACT_APP_BACKEND + `/v1/virtual-machine/create-vm?vm_image_name=${selectedImage}&cluster_name=${selectedStore}&vm_parameterset_name=${selectedParameterName}`,
     })
     .then(response => {
       if(response.status === 200) {

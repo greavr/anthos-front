@@ -168,7 +168,7 @@ const ACM = () => {
 
     axios({
       method: 'post',
-      url: `https://edge-demo-fljjthbteq-uw.a.run.app/v1/acm/apply-policy?${param}`,
+      url: process.env.REACT_APP_BACKEND + `/v1/acm/apply-policy?${param}`,
       data: selectedTagsInObject
     })
     .then(response => {

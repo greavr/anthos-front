@@ -20,7 +20,7 @@ const Modal = props => {
     getDashboard(data.name);
 
     const fetch_node_data_interval = setInterval(() => {
-      axios.get(`https://edge-demo-fljjthbteq-uw.a.run.app/v1/abm/nodes/?cluster_name=${data.name}&location=${data.location}`)
+      axios.get(process.env.REACT_APP_BACKEND + `/v1/abm/nodes/?cluster_name=${data.name}&location=${data.location}`)
       .then(function (response) {
         // handle success
         setNodes(response.data);
@@ -37,7 +37,7 @@ const Modal = props => {
   }, [])
 
   const fetchNodeData = () => {
-    axios.get(`https://edge-demo-fljjthbteq-uw.a.run.app/v1/abm/nodes/?cluster_name=${data.name}&location=${data.location}`)
+    axios.get(process.env.REACT_APP_BACKEND + `/v1/abm/nodes/?cluster_name=${data.name}&location=${data.location}`)
     .then(function (response) {
       // handle success
       setNodes(response.data);
@@ -51,9 +51,9 @@ const Modal = props => {
   const handleNodeClick = index => {
     let postURL;
     if(nodes[index].status === 'TERMINATED') {
-      postURL = `https://edge-demo-fljjthbteq-uw.a.run.app/v1/chaos/startnode/?node_zone=${nodes[index].zone}&node_name=${nodes[index].name}`
+      postURL = process.env.REACT_APP_BACKEND + `/v1/chaos/startnode/?node_zone=${nodes[index].zone}&node_name=${nodes[index].name}`
     } else if(nodes[index].status === 'TERMINATING' || 'RUNNING') {
-      postURL = `https://edge-demo-fljjthbteq-uw.a.run.app/v1/chaos/stopnode/?node_zone=${nodes[index].zone}&node_name=${nodes[index].name}`
+      postURL = process.env.REACT_APP_BACKEND + `/v1/chaos/stopnode/?node_zone=${nodes[index].zone}&node_name=${nodes[index].name}`
     }
     axios.post(postURL)
     .then(response => {
@@ -65,7 +65,7 @@ const Modal = props => {
   }
 
   const getDashboard = name => {
-    axios.get(`https://edge-demo-fljjthbteq-uw.a.run.app/v1/abm/urls/?cluster_name=${name}`)
+    axios.get(process.env.REACT_APP_BACKEND + `/v1/abm/urls/?cluster_name=${name}`)
     .then(response => {
       console.log(response.data)
       setPOS(response.data.pos);
@@ -76,7 +76,7 @@ const Modal = props => {
   }
 
   const getLogs = name => {
-    axios.get(`https://edge-demo-fljjthbteq-uw.a.run.app/v1/abm/logs/?cluster_name=${name}&row_count=30`)
+    axios.get(process.env.REACT_APP_BACKEND + `/v1/abm/logs/?cluster_name=${name}&row_count=30`)
     .then(response => {
       setLogs(response.data);
     })
